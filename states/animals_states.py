@@ -9,6 +9,8 @@ class animals_new(StatesGroup):
     answer5 = State()
     answer6 = State()
     answer7 = State()
+    answer8 = State()
+    answer9 = State()
 
 
 

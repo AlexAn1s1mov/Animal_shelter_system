@@ -37,15 +37,29 @@ kb_db_admin = ReplyKeyboardMarkup(
     resize_keyboard=True
 )
 
-kb_db_tools = ReplyKeyboardMarkup(
+kb_db_tools_animal = ReplyKeyboardMarkup(
     keyboard=[
         [
-            KeyboardButton(text='Добавить'),
-            KeyboardButton(text='Изменить'),
+            KeyboardButton(text='Добавить животное'),
+            KeyboardButton(text='Изменить животное'),
         ],
         [
-            KeyboardButton(text='Удалить'),
+            KeyboardButton(text='Удалить животное'),
             KeyboardButton(text='Просмотреть')
+        ],
+        [
+            KeyboardButton(text='Главное меню')
+        ]
+    ],
+    resize_keyboard=True
+)
+
+kb_db_calendar = ReplyKeyboardMarkup(
+    keyboard=[
+        [
+            KeyboardButton(text='Прогулки за сегодня'),
+            KeyboardButton(text='Прогулки за неделю'),
+            KeyboardButton(text='Прогулки за месяц'),
         ],
         [
             KeyboardButton(text='Главное меню')

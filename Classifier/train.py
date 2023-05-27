@@ -1,5 +1,6 @@
 from sklearn.datasets import load_files
 import asyncio
+import pandas as pd
 from keras.utils import np_utils
 import numpy as np
 from glob import glob
@@ -16,6 +17,11 @@ from keras.optimizers import Adam, Adamax
 from keras.callbacks import ModelCheckpoint
 random.seed(8675309)
 import matplotlib.pyplot as plt
+import pandas as pd
+import psycopg2
+from psycopg2 import Error
+import warnings
+warnings.simplefilter("ignore")
 
 
 # define function to load train, test, and validation datasets
@@ -73,7 +79,17 @@ def ResNet50_predict_breed(img_path):
     #cv_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     #imgplot = plt.imshow(cv_rgb)
     if dog_detector(img_path) == True:
-        return f"Порода данной собаки {breed}"
+        conn = psycopg2.connect(
+            dbname='dog_shelter',
+            user='postgres',
+            password='Alex2001',
+            host='localhost')
+        sql_zap = '''SELECT ru_breed_name FROM breeds
+            WHERE label='{}'
+            '''.format(breed)
+        zapros = pd.read_sql(sql_zap, conn)
+        conn.close()
+        return f"Это {zapros['ru_breed_name'][0]}"
     if face_detector(img_path) == True:
         return f"На изображении человек"
     else:

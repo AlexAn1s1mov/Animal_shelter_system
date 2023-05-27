@@ -7,12 +7,23 @@ kb_menu = ReplyKeyboardMarkup(
             KeyboardButton(text='Календарь прогулок')
         ],
         [
-            KeyboardButton(text='Определить породу собаки')
+            KeyboardButton(text='Определить породу собаки'),
+            KeyboardButton(text='Выйти на прогулку')
         ],
-        # [
-        #     KeyboardButton(text='Помощь'),
-        #     KeyboardButton(text='Контакты')
-        # ]
+    ],
+    resize_keyboard=True
+)
+
+kb_menu_2 = ReplyKeyboardMarkup(
+    keyboard=[
+        [
+            KeyboardButton(text='База данных'),
+            KeyboardButton(text='Календарь прогулок')
+        ],
+        [
+            KeyboardButton(text='Определить породу собаки'),
+            KeyboardButton(text='Завершить прогулку')
+        ],
     ],
     resize_keyboard=True
 )

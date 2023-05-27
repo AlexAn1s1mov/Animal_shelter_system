@@ -3,7 +3,7 @@ from aiogram import types
 from data.config import admins
 from handlers.utils.db_api.query.animals_q import *
 from loader import dp
-from keyboards.default import kb_db, kb_db_admin, kb_db_tools
+from keyboards.default import *
 
 
 cur_table = ''
@@ -26,15 +26,15 @@ async def animals_select(message: types.Message):
         global cur_table
         cur_table = 'Животные'
 
-        await message.answer("Вы выбрали таблицу 'Животные'.", reply_markup=kb_db_tools)
+        await message.answer("Вы выбрали таблицу 'Животные'.", reply_markup=kb_db_tools_animal)
 
 
-@dp.message_handler(text='Просмотреть')
-async def animals_select(message: types.Message):
-    if message.from_user.id in admins:
-        global cur_table
-        if cur_table == 'Животные':
-            await message.answer(f'Содержимое таблицы:\n {select_all_animals()}')
+# @dp.message_handler(text='Просмотреть')
+# async def animals_select(message: types.Message):
+#     if message.from_user.id in admins:
+#         global cur_table
+#         if cur_table == 'Животные':
+#             await message.answer(f'Содержимое таблицы:\n {select_all_animals()}')
 
 
 
