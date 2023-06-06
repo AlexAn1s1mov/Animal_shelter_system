@@ -112,27 +112,3 @@ def delet_animals(id):
             conn.close()
 
 
-def id_animal_select(id):
-    try:
-        # Подключение к базе данных
-        conn = psycopg2.connect(
-            dbname='dog_shelter',
-            user='postgres',
-            password='Alex2001',
-            host='localhost')
-
-        # Извлечение данных из таблицы
-        sql_zap = '''SELECT * FROM animals
-        where id = {}'''.format(id)
-        zapros = pd.read_sql(sql_zap, conn)
-
-        # Закрытие соединения
-        conn.close()
-        # Закрытие соединения
-        return (zapros)
-
-    except (Exception, Error) as error:
-        print("Ошибка при работе с PostgreSQL", error)
-    finally:
-        if conn:
-            conn.close()

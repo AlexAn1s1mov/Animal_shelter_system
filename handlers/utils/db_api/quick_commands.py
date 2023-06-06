@@ -1,29 +1,29 @@
 from asyncpg import UniqueViolationError
 
 from handlers.utils.db_api.db_TelegramBot import db
-from handlers.utils.db_api.schemas.user import User
+from handlers.utils.db_api.schemas.user import Users
 
 
 async def add_user(user_id: int, first_name: str, last_name: str, username: str, status: str):
     try:
-        user = User(user_id=user_id, first_name=first_name, last_name=last_name, username=username, status=status)
+        user = Users(user_id=user_id, first_name=first_name, last_name=last_name, username=username, status=status)
         await user.create()
     except UniqueViolationError:
         print('Пользователь не добавлен')
 
 
 async def select_all_users():
-    users = await User.query.gino.all()
+    users = await Users.query.gino.all()
     return users
 
 
 async def count_users():
-    count = await db.func.count(User.user_id).gino.scalar()
+    count = await db.func.count(Users.user_id).gino.scalar()
     return count
 
 
 async def select_user(user_id):
-    user = await User.query.where(User.user_id == user_id).gino.first()
+    user = await Users.query.where(Users.user_id == user_id).gino.first()
     return user
 
 

@@ -13,11 +13,17 @@ async def data_base(message: types.Message):
     await message.answer(f'Что вы хотите сделать?', reply_markup=kb_db)
 
 @dp.message_handler(text='Работа с базой данных')
-async def data_base(message: types.Message):
+async def data_base1(message: types.Message):
     if message.from_user.id in admins:
         await message.answer(f'Выберите таблицу', reply_markup=kb_db_admin)
     else:
         await message.answer(f'У вас не хватает прав доступа!')
+
+@dp.message_handler(text='Получить информацию')
+async def data_base2(message: types.Message):
+        await message.answer(f'Выберите интересующий вас запрос.', reply_markup=kb_db_query)
+
+
 
                                                     # Animals
 @dp.message_handler(text='Животные')

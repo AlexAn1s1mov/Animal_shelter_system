@@ -126,6 +126,8 @@ async def state9(message: types.Message, state: FSMContext):
     #                                results=test1_score(list),
     #                                status='created')
     # await animals_t.update_result(id=id_, results=test1_score(list))
+    if list[4]=='нет':
+        list[4]=None
     if list[6]=='нет':
         list[6]=None
     insert_into_animals(list[0],list[1], list[2],list[3], list[4],list[5], list[6],list[7], list[8])

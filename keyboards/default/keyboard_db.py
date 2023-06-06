@@ -67,3 +67,19 @@ kb_db_calendar = ReplyKeyboardMarkup(
     ],
     resize_keyboard=True
 )
+
+kb_db_query = ReplyKeyboardMarkup(
+    keyboard=[
+        [
+            KeyboardButton(text='О животном'),
+            KeyboardButton(text='Количество собак в приюте'),
+
+
+
+        ],
+        [
+            KeyboardButton(text='Главное меню')
+        ]
+    ],
+    resize_keyboard=True
+)

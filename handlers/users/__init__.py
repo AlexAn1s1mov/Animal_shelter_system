@@ -7,7 +7,8 @@ from .contacts import dp
 from .dog_breeds import dp
 from .add_animal import dp
 from .walk import dp
-from .calendar import  dp
+from .calendar import dp
+from .db_query import dp
 
 from .database import dp
 
